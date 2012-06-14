@@ -66,6 +66,9 @@ public class RepositoryTest {
 		
 		Book book = repository.findSingle(Book.class, having(on(Book.class).getTitle()).equal("Some booktitle"));
 		assertThat(book, is( someBook ));
+		
+		books = repository.find(Book.class, having(on(Book.class).getPages()).greaterThanOrEqualTo(10));
+		assertThat(books.size(), is(3));
 	}
 	
 	@Test
